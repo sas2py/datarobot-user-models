@@ -17,6 +17,7 @@ TRAINING = "training"
 INFERENCE = "inference"
 
 # Framework keywords
+SAS2PY = "sas2py"
 XGB = "xgboost"
 KERAS = "keras"
 KERAS_JOBLIB = "keras_joblib"

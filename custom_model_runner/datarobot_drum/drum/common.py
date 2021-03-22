@@ -40,6 +40,7 @@ LOG_LEVELS = {
 
 class SupportedFrameworks:
     SKLEARN = "scikit-learn"
+    SAS2PY = "sas2py"
     TORCH = "torch"
     KERAS = "keras"
     XGBOOST = "xgboost"
@@ -48,6 +49,7 @@ class SupportedFrameworks:
 
 extra_deps = {
     SupportedFrameworks.SKLEARN: ["scikit-learn", "scipy", "numpy"],
+    SupportedFrameworks.SAS2PY: ["scikit-learn", "scipy", "numpy"],
     SupportedFrameworks.TORCH: ["torch", "numpy", "scikit-learn", "scipy"],
     SupportedFrameworks.KERAS: ["scipy", "numpy", "h5py", "tensorflow>=2.2.1"],
     SupportedFrameworks.XGBOOST: ["scipy", "numpy", "xgboost"],
@@ -180,7 +182,7 @@ class ArgumentsOptions:
     CLASS_LABELS_FILE = "--class-labels-file"
     SKIP_DEPS_INSTALL = "--skip-deps-install"
     SPARSE_COLFILE = "--sparse-column-file"
-
+    
     MAIN_COMMAND = "drum" if not DEBUG else "./custom_model_runner/bin/drum"
 
     SCORE = "score"

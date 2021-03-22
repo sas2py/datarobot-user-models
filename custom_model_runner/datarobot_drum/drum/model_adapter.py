@@ -14,6 +14,7 @@ from pathlib import Path
 from datarobot_drum.drum.artifact_predictors.keras_predictor import KerasPredictor
 from datarobot_drum.drum.artifact_predictors.pmml_predictor import PMMLPredictor
 from datarobot_drum.drum.artifact_predictors.sklearn_predictor import SKLearnPredictor
+from datarobot_drum.drum.artifact_predictors.sas2py_predictor import SAS2PYPredictor
 from datarobot_drum.drum.artifact_predictors.torch_predictor import PyTorchPredictor
 from datarobot_drum.drum.artifact_predictors.xgboost_predictor import XGBoostPredictor
 from datarobot_drum.drum.common import (
@@ -48,11 +49,13 @@ class PythonModelAdapter:
         # predictor for the given model artifact (based on the instance type of the estimator) it might
         # overlap with other predictors especially the ones with `sklearn.pipeline`
         self._artifact_predictors = [
+            SAS2PYPredictor(),
             KerasPredictor(),
             XGBoostPredictor(),
             PyTorchPredictor(),
             PMMLPredictor(),
-            SKLearnPredictor(),
+            SKLearnPredictor()
+            
         ]
         self._predictor_to_use = None
         self._custom_hooks = {hook: None for hook in CustomHooks.ALL_PREDICT_FIT_STRUCTURED}
@@ -212,6 +215,7 @@ class PythonModelAdapter:
         pred_that_support_artifact = []
         for pred in self._artifact_predictors:
             if pred.is_artifact_supported(model_artifact_file):
+                print(pred.name)
                 pred_that_support_artifact.append(pred)
 
             if pred.can_load_artifact(model_artifact_file):

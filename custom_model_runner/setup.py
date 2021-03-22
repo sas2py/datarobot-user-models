@@ -15,6 +15,7 @@ with open(os.path.join(root, "README.md")) as f:
 
 extras_require = {
     "scikit-learn": extra_deps[SupportedFrameworks.SKLEARN],
+    "sas2py": extra_deps[SupportedFrameworks.SAS2PY],
     "torch": extra_deps[SupportedFrameworks.TORCH],
     "keras": extra_deps[SupportedFrameworks.KERAS],
     "xgboost": extra_deps[SupportedFrameworks.XGBOOST],
