@@ -1,0 +1,11 @@
+cd sas2py
+cd wheel
+./run.sh will create sas2py_runner wheel package
+
+sas2py_runner is imported into sas2py_predictor.py
+
+now model1.py shows a sample python code which is saved as dill file
+
+drum score --code-dir model_templates/inference/python3_sas2py --input tests/testdata/boston_housing.csv --target-type regression
+
+works as sas2py_predictor is loading the dill file and calls predict
